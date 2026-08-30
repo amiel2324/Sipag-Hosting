@@ -647,3 +647,43 @@ body {
   top: 0;
   z-index: 100;
 }
+
+/* ----------------------------------------------------
+   1. SMALL PHONES & SMARTWATCHES 
+   (e.g., iPhone SE, Galaxy Z Flip folded, small screens)
+------------------------------------------------------- */
+@media screen and (max-width: 360px) {
+  body {
+    font-size: 14px;
+    padding: 10px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* ----------------------------------------------------
+   2. STANDARD MOBILE PHONES (The Baseline Mobile Style)
+   (e.g., iPhone 15/16, Galaxy S25, Pixel 9)
+------------------------------------------------------- */
+@media screen and (min-width: 361px) and (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .grid-container {
+    grid-template-columns: 1fr; /* Single column layout for small screens */
+  }
+}
+
+/* ----------------------------------------------------
+   3. LARGE PHONES, FOLDABLES & PHABLETS
+   (e.g., iPhone Pro Max, Galaxy Ultra, Galaxy Fold unfolded)
+------------------------------------------------------- */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .grid-container {
+    grid-template-columns: 1fr 1fr; /* Splits into 2 columns on wider mobile screens */
+  }
+}
