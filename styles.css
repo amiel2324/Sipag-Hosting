@@ -648,42 +648,87 @@ body {
   z-index: 100;
 }
 
-/* ----------------------------------------------------
-   1. SMALL PHONES & SMARTWATCHES 
-   (e.g., iPhone SE, Galaxy Z Flip folded, small screens)
-------------------------------------------------------- */
-@media screen and (max-width: 360px) {
-  body {
-    font-size: 14px;
-    padding: 10px;
+/* ==========================================
+   Mobile Responsive Adjustments (Max Width: 768px)
+   ========================================== */
+@media (max-width: 768px) {
+  /* Fix Header Layout & Logo Scaling */
+  .header {
+    padding: 10px 12px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
   }
-  h1 {
-    font-size: 1.5rem;
-  }
-}
 
-/* ----------------------------------------------------
-   2. STANDARD MOBILE PHONES (The Baseline Mobile Style)
-   (e.g., iPhone 15/16, Galaxy S25, Pixel 9)
-------------------------------------------------------- */
-@media screen and (min-width: 361px) and (max-width: 480px) {
-  .hero-title {
-    font-size: 2rem;
+  .logo-container img {
+    height: 32px; /* Scale logo image to fit tight mobile headers */
   }
-  .grid-container {
-    grid-template-columns: 1fr; /* Single column layout for small screens */
-  }
-}
 
-/* ----------------------------------------------------
-   3. LARGE PHONES, FOLDABLES & PHABLETS
-   (e.g., iPhone Pro Max, Galaxy Ultra, Galaxy Fold unfolded)
-------------------------------------------------------- */
-@media screen and (min-width: 481px) and (max-width: 767px) {
-  .hero-title {
-    font-size: 2.5rem;
+  .brand-title {
+    font-size: 0.95rem; /* Prevent brand text from pushing buttons off-screen */
   }
-  .grid-container {
-    grid-template-columns: 1fr 1fr; /* Splits into 2 columns on wider mobile screens */
+
+  .nav-links {
+    gap: 6px;
+  }
+
+  .nav-btn-primary,
+  .nav-btn-secondary {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+  }
+
+  /* Scale Main Section & Typography */
+  .hero-stage {
+    width: 95%;
+    padding: 10px 5px;
+    margin-top: 15px;
+  }
+
+  .hero-title {
+    font-size: 1.35rem; /* Scale down hero text so it doesn't take over screen height */
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  /* Fix Billing Cycle Toggle Wrapping */
+  .billing-container {
+    width: 100%;
+    margin: 15px 0;
+  }
+
+  .billing-toggle {
+    flex-direction: column; /* Stack cycle options vertically on mobile */
+    width: 100%;
+    gap: 6px;
+    border-radius: 12px;
+    padding: 6px;
+  }
+
+  .toggle-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+
+  /* Single Column Layout for Pricing Cards & Features */
+  .tiers-grid {
+    grid-template-columns: 1fr; /* Display cards 1 per row */
+    gap: 15px;
+  }
+
+  .tier-card {
+    padding: 20px 15px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for features on mobile */
+    gap: 10px;
   }
 }
