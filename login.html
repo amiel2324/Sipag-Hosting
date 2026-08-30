@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Sipag Hosting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-banner">
+    Sipag sa Server, Walang Lag sa Gamer.
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="index.html" class="brand-container brand-link">
+      <div class="logo-container">
+        <img src="images/logo.png" alt="Sipag Hosting Logo" />
+      </div>
+      <h1 class="brand-title">SIPAG <span>HOSTING</span></h1>
+    </a>
+  </header>
+
+  <!-- Login Card Stage -->
+  <main class="auth-stage">
+    <div class="auth-card">
+      <h2 class="auth-title">Account Login</h2>
+      <p class="auth-subtitle" id="login-notice">Enter your credentials to manage your server nodes.</p>
+
+      <form class="auth-form" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="username">Username or Email</label>
+          <input type="text" id="username" placeholder="e.g. Steve_Craft" required />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="••••••••" required />
+        </div>
+
+        <button type="submit" class="btn-submit">Log In & Continue</button>
+      </form>
+
+      <p class="auth-footer-text">
+        Don't have an account yet? <a href="register.html">Register here</a>
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">SIPAG HOSTING</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="#">Status</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Check if user came from selecting a hosting tier
+    const pendingPlan = JSON.parse(localStorage.getItem('sipag_pending_plan'));
+    if (pendingPlan) {
+      document.getElementById('login-notice').innerHTML = `Log in to add <strong>${pendingPlan.planName} (${pendingPlan.period})</strong> to your account.`;
+    }
+
+    function handleLogin(event) {
+      event.preventDefault();
+      const usernameInput = document.getElementById('username').value;
+      
+      const user = {
+        username: usernameInput,
+        email: usernameInput.includes('@') ? usernameInput : `${usernameInput.toLowerCase()}@minecraft.ph`
+      };
+
+      // Save logged-in user state
+      localStorage.setItem('sipag_user', JSON.stringify(user));
+
+      // Add subscription if a pending plan exists
+      if (pendingPlan) {
+        let subs = JSON.parse(localStorage.getItem('sipag_subscriptions')) || [];
+        subs.push({
+          id: 'MC-' + Math.floor(1000 + Math.random() * 9000),
+          plan: pendingPlan.planName,
+          period: pendingPlan.period,
+          status: 'Active',
+          ip: '103.21.244.' + Math.floor(Math.random() * 250) + ':25565'
+        });
+        localStorage.setItem('sipag_subscriptions', JSON.stringify(subs));
+        localStorage.removeItem('sipag_pending_plan');
+      }
+
+      window.location.href = 'dashboard.html';
+    }
+  </script>
+</body>
+</html>

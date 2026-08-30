@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sipag Hosting | Solid Foundations for Minecraft</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-banner">
+    Sipag sa Server, Walang Lag sa Gamer.
+  </div>
+
+  <!-- Header with Auth Buttons -->
+  <header class="header">
+    <a href="index.html" class="brand-container brand-link">
+      <div class="logo-container">
+        <img src="images/logo.png" alt="Sipag Hosting Logo" />
+      </div>
+      <h1 class="brand-title">SIPAG <span>HOSTING</span></h1>
+    </a>
+
+    <!-- Navigation Redirect Buttons -->
+    <nav class="nav-links">
+      <a href="login.html" class="nav-btn-secondary" id="nav-login-btn">Log In</a>
+      <a href="register.html" class="nav-btn-primary" id="nav-register-btn">Register</a>
+      <a href="dashboard.html" class="nav-btn-primary" id="nav-dashboard-btn" style="display:none;">Dashboard</a>
+      <button onclick="logoutMain()" class="nav-btn-secondary" id="nav-logout-btn" style="display:none; cursor:pointer;">Logout</button>
+    </nav>
+  </header>
+
+  <!-- Hero Section & Glass Card Layout -->
+  <main class="hero-stage">
+    <h2 class="hero-title">Solid Foundations for a Stronger Minecraft Experience.</h2>
+    <p class="hero-subtitle">High-capacity legacy node hosting tailored for classic modpacks, network hubs, and optimized community servers.</p>
+
+    <!-- Subscription Billing Cycle Selector -->
+    <div class="billing-container">
+      <div class="billing-toggle">
+        <button class="toggle-btn active" data-period="monthly" onclick="setBilling('monthly')">Monthly</button>
+        <button class="toggle-btn" data-period="half-year" onclick="setBilling('half-year')">
+          6 Months <span class="discount-badge">SAVE 25%</span>
+        </button>
+        <button class="toggle-btn" data-period="yearly" onclick="setBilling('yearly')">
+          1 Year <span class="discount-badge">SAVE 35%</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Pricing Tiers Grid -->
+    <div class="tiers-grid">
+      
+      <!-- Copper Ingot -->
+      <div class="tier-card">
+        <div class="badge-icon">🧱</div>
+        <div class="tier-name">Copper Ingot</div>
+        <div class="tier-price"><span id="price-copper">₱150</span><span class="period" id="period-copper">/mo</span></div>
+        <ul class="tier-specs">
+          <li>🟢 <strong>2 GB</strong> RAM</li>
+          <li>🟢 <strong>2 vCPU</strong> Cores</li>
+          <li>🟢 <strong>20 GB</strong> SATA SSD</li>
+          <li>🟢 Up to 8 Players</li>
+        </ul>
+        <button class="btn-start" onclick="selectPlan('Copper Ingot', 150)">Get Started</button>
+      </div>
+
+      <!-- Iron Ingot -->
+      <div class="tier-card">
+        <div class="badge-icon">⬜</div>
+        <div class="tier-name">Iron Ingot</div>
+        <div class="tier-price"><span id="price-iron">₱300</span><span class="period" id="period-iron">/mo</span></div>
+        <ul class="tier-specs">
+          <li>🟢 <strong>4 GB</strong> RAM</li>
+          <li>🟢 <strong>4 vCPU</strong> Cores</li>
+          <li>🟢 <strong>40 GB</strong> SATA SSD</li>
+          <li>🟢 10–15 Players</li>
+        </ul>
+        <button class="btn-start" onclick="selectPlan('Iron Ingot', 300)">Get Started</button>
+      </div>
+
+      <!-- Gold Ingot -->
+      <div class="tier-card">
+        <div class="badge-icon">🟨</div>
+        <div class="tier-name">Gold Ingot</div>
+        <div class="tier-price"><span id="price-gold">₱550</span><span class="period" id="period-gold">/mo</span></div>
+        <ul class="tier-specs">
+          <li>🟢 <strong>8 GB</strong> RAM</li>
+          <li>🟢 <strong>6 vCPU</strong> Cores</li>
+          <li>🟢 <strong>80 GB</strong> SATA SSD</li>
+          <li>🟢 Classic Modpacks</li>
+        </ul>
+        <button class="btn-start" onclick="selectPlan('Gold Ingot', 550)">Get Started</button>
+      </div>
+
+      <!-- Diamond Ingot -->
+      <div class="tier-card">
+        <div class="badge-icon">💎</div>
+        <div class="tier-name">Diamond Ingot</div>
+        <div class="tier-price"><span id="price-diamond">₱800</span><span class="period" id="period-diamond">/mo</span></div>
+        <ul class="tier-specs">
+          <li>🟢 <strong>12 GB</strong> RAM</li>
+          <li>🟢 <strong>8 vCPU</strong> Cores</li>
+          <li>🟢 <strong>120 GB</strong> SATA SSD</li>
+          <li>🟢 Heavy Modpacks</li>
+        </ul>
+        <button class="btn-start" onclick="selectPlan('Diamond Ingot', 800)">Get Started</button>
+      </div>
+
+      <!-- Netherite Ingot -->
+      <div class="tier-card">
+        <div class="badge-icon">⬛</div>
+        <div class="tier-name">Netherite Ingot</div>
+        <div class="tier-price"><span id="price-netherite">₱1,050</span><span class="period" id="period-netherite">/mo</span></div>
+        <ul class="tier-specs">
+          <li>🟢 <strong>16 GB</strong> RAM</li>
+          <li>🟢 <strong>8 vCPU</strong> Cores</li>
+          <li>🟢 <strong>150 GB</strong> SATA SSD</li>
+          <li>🟢 Proxy / Hub Nodes</li>
+        </ul>
+        <button class="btn-start" onclick="selectPlan('Netherite Ingot', 1050)">Get Started</button>
+      </div>
+
+    </div>
+
+    <!-- Features Highlight Bar -->
+    <section class="features-container">
+      <h3 class="features-title">ALL PLANS INCLUDE</h3>
+      <div class="features-grid">
+        <div class="feature-item"><div class="feature-icon-box">🔧</div><span class="feature-label">Unmanaged Control</span></div>
+        <div class="feature-item"><div class="feature-icon-box">📍</div><span class="feature-label">Philippine Server</span></div>
+        <div class="feature-item"><div class="feature-icon-box">👥</div><span class="feature-label">Unlimited Player Slots</span></div>
+        <div class="feature-item"><div class="feature-icon-box">📶</div><span class="feature-label">Unmetered Bandwidth</span></div>
+        <div class="feature-item"><div class="feature-icon-box">⚙️</div><span class="feature-label">Enterprise Xeon CPU</span></div>
+        <div class="feature-item"><div class="feature-icon-box">🛡️</div><span class="feature-label">DDoS Protection</span></div>
+        <div class="feature-item"><div class="feature-icon-box">🎛️</div><span class="feature-label">Pterodactyl Panel</span></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">SIPAG HOSTING</div>
+      <div class="footer-links">
+        <a href="#">About Us</a>
+        <a href="#">Status</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let currentPeriod = 'monthly';
+    const baseMonthlyPrices = { copper: 150, iron: 300, gold: 550, diamond: 800, netherite: 1050 };
+
+    function setBilling(period) {
+      currentPeriod = period;
+      document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`[data-period="${period}"]`).classList.add('active');
+
+      let discountMultiplier = 1.0;
+      if (period === 'half-year') discountMultiplier = 0.75;
+      else if (period === 'yearly') discountMultiplier = 0.65;
+
+      for (const [tier, basePrice] of Object.entries(baseMonthlyPrices)) {
+        const discountedMonthlyRate = Math.round(basePrice * discountMultiplier);
+        document.getElementById(`price-${tier}`).textContent = `₱${discountedMonthlyRate.toLocaleString()}`;
+      }
+    }
+
+    function selectPlan(planName, basePrice) {
+      const selected = { planName, basePrice, period: currentPeriod };
+      localStorage.setItem('sipag_pending_plan', JSON.stringify(selected));
+
+      const currentUser = localStorage.getItem('sipag_user');
+      if (currentUser) {
+        window.location.href = 'dashboard.html';
+      } else {
+        window.location.href = 'register.html';
+      }
+    }
+
+    function checkLoginState() {
+      const user = JSON.parse(localStorage.getItem('sipag_user'));
+      const loginBtn = document.getElementById('nav-login-btn');
+      const registerBtn = document.getElementById('nav-register-btn');
+      const dashboardBtn = document.getElementById('nav-dashboard-btn');
+      const logoutBtn = document.getElementById('nav-logout-btn');
+
+      if (user) {
+        loginBtn.style.display = 'none';
+        registerBtn.style.display = 'none';
+        dashboardBtn.style.display = 'inline-block';
+        logoutBtn.style.display = 'inline-block';
+      } else {
+        loginBtn.style.display = 'inline-block';
+        registerBtn.style.display = 'inline-block';
+        dashboardBtn.style.display = 'none';
+        logoutBtn.style.display = 'none';
+      }
+    }
+
+    function logoutMain() {
+      localStorage.removeItem('sipag_user');
+      checkLoginState();
+    }
+
+    checkLoginState();
+  </script>
+</body>
+</html>
